@@ -147,7 +147,7 @@ export default class Server {
             res.render('newsDetail/newsDetail', {
                 isLoggedIn: ((req as any).session as any)?.userId ? true : false,
                 news: {
-                    id: req.params.id,
+                    id: req.params['id'],
                     title: 'Título de la Noticia',
                     content: 'Contenido de la noticia',
                     comments: []

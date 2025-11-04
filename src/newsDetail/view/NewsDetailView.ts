@@ -5,10 +5,10 @@ import NewsDetailModel from '../model/NewsDetailModel'
 export default class NewsDetailView {
     constructor(private model: NewsDetailModel) { }
 
-    render = (req: Request, res: Response): void => {
+    render(req: Request, res: Response): void {
         try {
             const { id } = req.params
-            const news = this.model.loadNews(id)
+            const news = this.model.loadNews(id!) 
 
             if (!news) {
                 return res.status(404).render('error/404', {
@@ -23,10 +23,10 @@ export default class NewsDetailView {
         }
     }
 
-    renderPartial = (req: Request, res: Response): void => {
+    renderPartial(req: Request, res: Response): void {
         try {
             const { id } = req.params
-            const news = this.model.loadNews(id)
+            const news = this.model.loadNews(id!) 
 
             res.json({ success: !!news, data: news })
         } catch (error) {
@@ -34,21 +34,21 @@ export default class NewsDetailView {
         }
     }
 
-    like = (req: Request, res: Response): void => {
+    like(req: Request, res: Response): void {
         try {
             const { id } = req.params
-            this.model.addLike(id)
+            this.model.addLike(id!) 
             res.json({ success: true, message: 'Like agregado' })
         } catch (error) {
             res.status(500).json({ success: false, error })
         }
     }
 
-    addComment = (req: Request, res: Response): void => {
+    addComment(req: Request, res: Response): void {
         try {
             const { id } = req.params
             const { author, text } = req.body
-            this.model.addComment(id, author, text)
+            this.model.addComment(id!, author, text) 
             res.json({ success: true, message: 'Comentario agregado' })
         } catch (error) {
             res.status(500).json({ success: false, error })

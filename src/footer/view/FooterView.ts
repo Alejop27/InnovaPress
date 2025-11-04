@@ -5,7 +5,7 @@ import FooterModel from '../model/FooterModel'
 export default class FooterView {
     constructor(private model: FooterModel) { }
 
-    render = (_req: Request, res: Response): void => {
+    render (_req: Request, res: Response): void {
         try {
             const config = this.model.getConfig()
             res.render('footer/footer', { config })
@@ -15,7 +15,7 @@ export default class FooterView {
         }
     }
 
-    renderPartial = (_req: Request, res: Response): void => {
+    renderPartial (_req: Request, res: Response): void  {
         try {
             const config = this.model.getConfig()
             res.json({ success: true, data: config })

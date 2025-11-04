@@ -4,7 +4,6 @@ import NewsRepository from '../../repository/NewsRepository'
 
 export default class NewsDetailModel {
     private currentNews: DetailNews | null = null
-    private userLiked: boolean = false
     private userFavorited: boolean = false
 
     constructor(private repository: typeof NewsRepository) { }
@@ -45,7 +44,6 @@ export default class NewsDetailModel {
         this.repository.updateLikes(newsId)
         if (this.currentNews) {
             this.currentNews.likes++
-            this.userLiked = true
         }
     }
 

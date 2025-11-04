@@ -1,14 +1,13 @@
-
 import { Request, Response } from 'express'
 import NewsGridModel from '../model/NewsGridModel'
 
 export default class NewsGridView {
     constructor(private model: NewsGridModel) { }
 
-    render = (req: Request, res: Response): void => {
+    render(req: Request, res: Response): void {
         try {
-            const page = req.query.page ? parseInt(req.query.page as string) : 1
-            const category = req.query.category as string || 'all'
+            const page = req.query['page'] ? parseInt(req.query['page'] as string) : 1
+            const category = req.query['category'] as string || 'all'
 
             this.model.setCategory(category)
             this.model.setCurrentPage(page)
@@ -30,9 +29,9 @@ export default class NewsGridView {
         }
     }
 
-    renderPartial = (req: Request, res: Response): void => {
+    renderPartial(req: Request, res: Response): void {
         try {
-            const page = req.query.page ? parseInt(req.query.page as string) : 1
+            const page = req.query['page'] ? parseInt(req.query['page'] as string) : 1
             const news = this.model.getGridNews(page)
             const totalPages = this.model.getTotalPages()
 

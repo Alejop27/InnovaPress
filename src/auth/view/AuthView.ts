@@ -1,3 +1,4 @@
+// src/auth/view/AuthView.ts
 
 import { Request, Response } from 'express'
 import AuthModel from '../model/AuthModel'
@@ -5,7 +6,7 @@ import AuthModel from '../model/AuthModel'
 export default class AuthView {
     constructor(private model: AuthModel) { }
 
-    render = (_req: Request, res: Response): void => {
+    render(_req: Request, res: Response): void  {  
         try {
             const config = this.model.getConfig()
             res.render('auth/auth', { config })
@@ -15,12 +16,13 @@ export default class AuthView {
         }
     }
 
-    register = (req: Request, res: Response): void => {
+    register(req: Request, res: Response): void  {  // ✅ Sin return
         try {
             const { email, name, password, confirmPassword } = req.body
 
             if (password !== confirmPassword) {
-                return res.json({ success: false, message: 'Las contraseñas no coinciden' })
+                res.json({ success: false, message: 'Las contraseñas no coinciden' })  // ✅ Sin return
+                return
             }
 
             const result = this.model.register(email, name, password)
@@ -30,13 +32,13 @@ export default class AuthView {
         }
     }
 
-    login = (req: Request, res: Response): void => {
+    login  (req: Request, res: Response): void  {
         try {
             const { email, password } = req.body
             const result = this.model.login(email, password)
 
             if (result.success) {
-                (req.session as any).userId = result.user?.id
+                ((req as any).session as any).userId = result.user?.id  // ✅ Cast as any
             }
 
             res.json(result)
@@ -45,17 +47,13 @@ export default class AuthView {
         }
     }
 
-    logout = (req: Request, res: Response): void => {
+    logout (_req: Request, res: Response): void {
         try {
             this.model.logout()
-            req.session.destroy((err) => {
-                if (err) {
-                    return res.json({ success: false, message: 'Error al cerrar sesión' })
-                }
-                res.json({ success: true, message: 'Sesión cerrada' })
-            })
+            res.json({ success: true, message: 'Sesión cerrada' })
         } catch (error) {
             res.status(500).json({ success: false, error })
         }
     }
+
 }

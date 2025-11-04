@@ -28,7 +28,7 @@ export default class SubmitNewsModel {
         const newForm: SubmitNewsForm = {
             ...form,
             id: Date.now().toString(),
-            submittedDate: new Date().toISOString().split('T')[0],
+            submittedDate: new Date().toISOString().split('T')[0] as string,
             status: 'pending'
         }
 

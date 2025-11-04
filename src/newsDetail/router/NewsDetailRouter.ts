@@ -11,9 +11,9 @@ export default class NewsDetailRouter {
     }
 
     private configureRoutes(): void {
-        this.router.get('/noticia/:id', this.view.render)
-        this.router.get('/noticia/:id/partial', this.view.renderPartial)
-        this.router.post('/noticia/:id/like', this.view.like)
-        this.router.post('/noticia/:id/comment', this.view.addComment)
+        this.router.get('/noticia/:id', (req, res) => this.view.render(req, res))
+        this.router.get('/noticia/:id/partial', (req, res) => this.view.renderPartial(req, res))
+        this.router.post('/noticia/:id/like', (req, res) => this.view.like(req, res))
+        this.router.post('/noticia/:id/comment', (req, res) => this.view.addComment(req, res))
     }
 }

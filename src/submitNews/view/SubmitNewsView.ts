@@ -5,7 +5,7 @@ import SubmitNewsModel from '../model/SubmitNewsModel'
 export default class SubmitNewsView {
     constructor(private model: SubmitNewsModel) { }
 
-    render = (req: Request, res: Response): void => {
+    render = (_req: Request, res: Response): void => {
         try {
             const config = this.model.getConfig()
             res.render('submitNews/submitNews', { config })
@@ -15,10 +15,10 @@ export default class SubmitNewsView {
         }
     }
 
-    submit = (req: Request, res: Response): void => {
+    submit  (req: Request, res: Response): void  {
         try {
             const { name, email, subject, newsInfo } = req.body
-            const image = req.file?.filename || undefined
+            const image = (req as any).file?.filename || undefined
 
             const form = {
                 name,
@@ -35,7 +35,7 @@ export default class SubmitNewsView {
         }
     }
 
-    renderPartial = (_req: Request, res: Response): void => {
+    renderPartial  (_req: Request, res: Response): void  {
         try {
             const config = this.model.getConfig()
             res.json({ success: true, data: config })

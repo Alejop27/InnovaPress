@@ -11,7 +11,7 @@ export default class FooterRouter {
     }
 
     private configureRoutes(): void {
-        this.router.get('/footer', this.view.render)
-        this.router.get('/footer/partial', this.view.renderPartial)
+        this.router.get('/footer', (req, res) => this.view.render(req, res))
+        this.router.get('/footer/partial', (req, res) => this.view.renderPartial(req, res))
     }
 }

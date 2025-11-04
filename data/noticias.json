@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1",
+    "title": "Plataforma de Gestión de Proyectos - Integrador I",
+    "summary": "Desarrollo de una plataforma web para gestionar proyectos académicos",
+    "fullContent": "Contenido completo de la noticia...",
+    "image": "/assets/images/news-1.jpg",
+    "category": "Tecnología",
+    "subject": "Integrador I",
+    "date": "2025-11-04",
+    "author": "Equipo Desarrollo",
+    "likes": 45,
+    "comments": [],
+    "favorites": 12
+  }
+]

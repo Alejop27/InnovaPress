@@ -11,7 +11,7 @@ export default class PaginationRouter {
     }
 
     private configureRoutes(): void {
-        this.router.get('/pagination', this.view.render)
-        this.router.get('/pagination/partial', this.view.renderPartial)
+        this.router.get('/pagination', (req, res) => this.view.render(req, res))
+        this.router.get('/pagination/partial', (req, res) => this.view.renderPartial(req, res))
     }
 }

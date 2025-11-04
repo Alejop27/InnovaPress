@@ -11,9 +11,9 @@ export default class FavoritesRouter {
     }
 
     private configureRoutes(): void {
-        this.router.get('/favoritos', this.view.render)
-        this.router.get('/favoritos/partial', this.view.renderPartial)
-        this.router.post('/api/favoritos/add', this.view.addFavorite)
-        this.router.post('/api/favoritos/remove', this.view.removeFavorite)
+        this.router.get('/favoritos', (req, res) => this.view.render(req, res))
+        this.router.get('/favoritos/partial', (req, res) => this.view.renderPartial(req, res))
+        this.router.post('/api/favoritos/add', (req, res) => this.view.addFavorite(req, res))
+        this.router.post('/api/favoritos/remove', (req, res) => this.view.removeFavorite(req, res))
     }
 }

@@ -11,7 +11,7 @@ export default class HeroRouter {
     }
 
     private configureRoutes(): void {
-        this.router.get('/hero', this.view.render)
-        this.router.get('/hero/partial', this.view.renderPartial)
+        this.router.get('/hero', (req, res) => this.view.render(req, res))
+        this.router.get('/hero/partial', (req, res) => this.view.renderPartial(req, res))
     }
 }

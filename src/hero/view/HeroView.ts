@@ -4,7 +4,7 @@ import HeroModel from '../model/HeroModel'
 export default class HeroView {
     constructor(private model: HeroModel) { }
 
-    render = (_req: Request, res: Response): void => {
+    render  (_req: Request, res: Response): void  {
         try {
             const config = this.model.getConfig()
             res.render('hero/hero', { config })
@@ -14,7 +14,7 @@ export default class HeroView {
         }
     }
 
-    renderPartial = (_req: Request, res: Response): void => {
+    renderPartial (_req: Request, res: Response): void {
         try {
             const config = this.model.getConfig()
             res.json({ success: true, data: config })

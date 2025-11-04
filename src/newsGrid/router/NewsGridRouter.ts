@@ -10,8 +10,8 @@ export default class NewsGridRouter {
     }
 
     private configureRoutes(): void {
-        this.router.get('/', this.view.render)
-        this.router.get('/grid', this.view.render)
-        this.router.get('/grid/partial', this.view.renderPartial)
+        this.router.get('/', (_req, res) => res.render('/grid'))
+        this.router.get('/grid', (req, res) => this.view.render(req, res))
+        this.router.get('/grid/partial', (req, res) => this.view.renderPartial(req, res))
     }
 }

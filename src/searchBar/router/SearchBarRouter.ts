@@ -11,7 +11,7 @@ export default class SearchBarRouter {
     }
 
     private configureRoutes(): void {
-        this.router.get('/search', this.view.render)
-        this.router.get('/api/search', this.view.search)
+        this.router.get('/search', (req, res) => this.view.render(req, res))
+        this.router.get('/api/search', (req, res) => this.view.search(req, res))
     }
 }

@@ -4,7 +4,7 @@ import HeaderModel from '../model/HeaderModel'
 export default class HeaderView {
     constructor(private model: HeaderModel) { }
 
-    render = (req: Request, res: Response): void => {
+    render (req: Request, res: Response): void  {
         try {
             const config = this.model.getConfig()
             const currentUser = this.model.getCurrentUser()
@@ -21,7 +21,7 @@ export default class HeaderView {
         }
     }
 
-    renderPartial = (_req: Request, res: Response): void => {
+    renderPartial  (_req: Request, res: Response): void  {
         try {
             const config = this.model.getConfig()
             res.json({ success: true, data: config })

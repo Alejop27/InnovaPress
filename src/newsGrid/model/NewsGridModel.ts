@@ -58,4 +58,8 @@ export default class NewsGridModel {
     setCurrentPage(page: number): void {
         this.currentPage = page
     }
+
+    getNewsByType(): News[] {
+        return this.repository.getAllNews()
+    }
 }

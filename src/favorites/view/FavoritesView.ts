@@ -1,3 +1,4 @@
+// src/favorites/view/FavoritesView.ts
 
 import { Request, Response } from 'express'
 import FavoritesModel from '../model/FavoritesModel'
@@ -5,9 +6,9 @@ import FavoritesModel from '../model/FavoritesModel'
 export default class FavoritesView {
     constructor(private model: FavoritesModel) { }
 
-    render = (req: Request, res: Response): void => {
+    render(req: Request, res: Response): void {
         try {
-            const userId = (req.session as any)?.userId || 'user-1'
+            const userId = ((req as any).session as any)?.userId || 'user-1'  
             this.model.loadUserFavorites(userId)
 
             const config = this.model.getConfig()
@@ -18,9 +19,9 @@ export default class FavoritesView {
         }
     }
 
-    renderPartial = (req: Request, res: Response): void => {
+    renderPartial(req: Request, res: Response): void {
         try {
-            const userId = (req.session as any)?.userId || 'user-1'
+            const userId = ((req as any).session as any)?.userId || 'user-1' 
             this.model.loadUserFavorites(userId)
 
             const config = this.model.getConfig()
@@ -30,10 +31,10 @@ export default class FavoritesView {
         }
     }
 
-    addFavorite = (req: Request, res: Response): void => {
+    addFavorite(req: Request, res: Response): void {
         try {
             const { newsId } = req.body
-            const userId = (req.session as any)?.userId || 'user-1'
+            const userId = ((req as any).session as any)?.userId || 'user-1'  
             this.model.loadUserFavorites(userId)
             this.model.addToFavorites(newsId)
 
@@ -43,10 +44,10 @@ export default class FavoritesView {
         }
     }
 
-    removeFavorite = (req: Request, res: Response): void => {
+    removeFavorite(req: Request, res: Response): void {
         try {
             const { newsId } = req.body
-            const userId = (req.session as any)?.userId || 'user-1'
+            const userId = ((req as any).session as any)?.userId || 'user-1'  
             this.model.loadUserFavorites(userId)
             this.model.removeFromFavorites(newsId)
 

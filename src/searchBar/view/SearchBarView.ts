@@ -5,7 +5,7 @@ import SearchBarModel from '../model/SearchBarModel'
 export default class SearchBarView {
     constructor(private model: SearchBarModel) { }
 
-    render = (_req: Request, res: Response): void => {
+    render(_req: Request, res: Response): void  {
         try {
             const config = this.model.getConfig()
             const filters = this.model.getFilters()
@@ -17,7 +17,7 @@ export default class SearchBarView {
         }
     }
 
-    search = (req: Request, res: Response): void => {
+    search (req: Request, res: Response): void {
         try {
             const { query } = req.query
             const results = this.model.search(query as string)

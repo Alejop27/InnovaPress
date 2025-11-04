@@ -10,7 +10,7 @@ export default class CategoriesRouter {
     }
 
     private configureRoutes(): void {
-        this.router.get('/categorias', this.view.render)
-        this.router.get('/categorias/partial', this.view.renderPartial)
+        this.router.get('/categorias', (req, res) => this.view.render(req, res))
+        this.router.get('/categorias/partial', (req, res) => this.view.renderPartial(req, res))
     }
 }

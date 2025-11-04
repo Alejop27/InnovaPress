@@ -5,7 +5,7 @@ import PaginationModel from '../model/PaginationModel'
 export default class PaginationView {
     constructor(private model: PaginationModel) { }
 
-    render = (_req: Request, res: Response): void => {
+    render(_req: Request, res: Response): void  {
         try {
             const config = this.model.getConfig()
             const data = this.model.getPaginationData()
@@ -23,7 +23,7 @@ export default class PaginationView {
         }
     }
 
-    renderPartial = (_req: Request, res: Response): void => {
+    renderPartial (_req: Request, res: Response): void {
         try {
             const config = this.model.getConfig()
             const data = this.model.getPaginationData()

@@ -5,7 +5,7 @@ import CategoriesModel from '../model/CategoriesModel'
 export default class CategoriesView {
     constructor(private model: CategoriesModel) { }
 
-    render = (req: Request, res: Response): void => {
+    render  (req: Request, res: Response): void  {
         try {
             const { category } = req.query
             if (category) {
@@ -20,7 +20,7 @@ export default class CategoriesView {
         }
     }
 
-    renderPartial = (_req: Request, res: Response): void => {
+    renderPartial (_req: Request, res: Response): void {
         try {
             const categories = this.model.getCategories()
             res.json({ success: true, data: categories })

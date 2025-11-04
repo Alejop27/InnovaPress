@@ -11,8 +11,8 @@ export default class SubmitNewsRouter {
     }
 
     private configureRoutes(): void {
-        this.router.get('/submit-news', this.view.render)
-        this.router.post('/api/submit-news', this.view.submit)
-        this.router.get('/submit-news/partial', this.view.renderPartial)
+        this.router.get('/submit-news', (req, res) => this.view.render(req, res))
+        this.router.post('/api/submit-news', (req, res) => this.view.submit(req, res))
+        this.router.get('/submit-news/partial', (req, res) => this.view.renderPartial(req, res))
     }
 }

@@ -17,40 +17,15 @@
         <main class="favorites">
             <div class="favorites__container">
                 <h1 class="favorites__title">Mis Noticias Favoritas</h1>
-                <p class="favorites__count">Total: <%= config.totalFavorites %> favoritos</p>
-
-                <% if (config.userFavorites && config.userFavorites.length> 0) { %>
-                    <div class="favorites__grid">
-                        <% config.userFavorites.forEach(news=> { %>
-                            <article class="favorite-card">
-                                <img src="<%= news.image %>" alt="<%= news.title %>" class="favorite-card__image">
-                                <div class="favorite-card__content">
-                                    <span class="favorite-card__category">
-                                        <%= news.category %>
-                                    </span>
-                                    <h3 class="favorite-card__title">
-                                        <%= news.title %>
-                                    </h3>
-                                    <p class="favorite-card__date">
-                                        <%= news.date %>
-                                    </p>
-                                    <a href="/noticia/<%= news.id %>" class="favorite-card__link">Ver más</a>
-                                </div>
-                            </article>
-                            <% }) %>
-                    </div>
-                    <% } else { %>
-                        <div class="empty-state">
-                            <i class="icon icon-heart" style="font-size: 3rem;"></i>
-                            <p>No tienes noticias favoritas aún</p>
-                            <a href="/" class="empty-state__btn">Explorar noticias</a>
-                        </div>
-                        <% } %>
+                <p class="favorites__count">Total: 0 favoritos</p>
+                <div class="empty-state">
+                    <p>No tienes noticias favoritas aún</p>
+                    <a href="/" class="empty-state__btn">Explorar noticias</a>
+                </div>
             </div>
         </main>
 
         <%- include('../footer/footer') %>
-            <script src="/js/main.js"></script>
 </body>
 
 </html>

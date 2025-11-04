@@ -1,18 +1,20 @@
 <section class="hero">
     <div class="hero__content">
-        <h1 class="hero__title">
-            <%= config.title %>
-        </h1>
-        <p class="hero__subtitle">
-            <%= config.subtitle %>
-        </p>
+        <h1 class="hero__title">INNOVAPRESS</h1>
+        <p class="hero__subtitle">Plataforma de Noticias - Proyectos Integradores UPB</p>
     </div>
-
     <div class="hero__collage">
-        <% config.images.forEach((image, index)=> { %>
-            <div class="hero__image-wrapper hero__image-wrapper--<%= index + 1 %>">
-                <img src="<%= image.url %>" alt="<%= image.alt %>" class="hero__image">
-            </div>
-            <% }) %>
+        <div class="hero__image-wrapper hero__image-wrapper--1">
+            <div style="background: linear-gradient(135deg, #667eea, #764ba2); width: 100%; height: 100%;"></div>
+        </div>
+        <div class="hero__image-wrapper hero__image-wrapper--2">
+            <div style="background: linear-gradient(135deg, #764ba2, #f093fb); width: 100%; height: 100%;"></div>
+        </div>
+        <div class="hero__image-wrapper hero__image-wrapper--3">
+            <div style="background: linear-gradient(135deg, #f093fb, #667eea); width: 100%; height: 100%;"></div>
+        </div>
+        <div class="hero__image-wrapper hero__image-wrapper--4">
+            <div style="background: linear-gradient(135deg, #667eea, #f093fb); width: 100%; height: 100%;"></div>
+        </div>
     </div>
 </section>

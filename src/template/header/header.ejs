@@ -1,34 +1,19 @@
 <header class="header">
     <div class="header__container">
-        <!-- LOGO Y NOMBRE -->
         <div class="header__logo">
-            <img src="<%= config.logo %>" alt="INNOVAPRESS" class="logo-image">
-            <span class="header__title">
-                <%= config.siteName %>
-            </span>
+            <span class="header__title">INNOVAPRESS</span>
         </div>
-
-        <!-- NAVEGACIÓN -->
         <nav class="header__nav">
-            <% config.navItems.forEach(item=> { %>
-                <a href="<%= item.url %>" class="nav-item <%= currentPath === item.url ? 'nav-item--active' : '' %>">
-                    <i class="icon icon-<%= item.icon %>"></i>
-                    <%= item.label %>
-                </a>
-                <% }) %>
+            <a href="/" class="nav-item nav-item--active">Inicio</a>
+            <a href="/categorias" class="nav-item">Categorías</a>
+            <a href="/favoritos" class="nav-item">Favoritos</a>
+            <a href="/submit-news" class="nav-item">Pauta</a>
         </nav>
-
-        <!-- USUARIO -->
         <div class="header__user">
             <% if (isLoggedIn) { %>
-                <button class="user-btn user-btn--logged">
-                    <i class="icon icon-user"></i>
-                </button>
+                <button class="user-btn user-btn--logged">👤</button>
                 <% } else { %>
-                    <a href="/auth" class="user-btn">
-                        <i class="icon icon-login"></i>
-                        Iniciar Sesión
-                    </a>
+                    <a href="/auth" class="user-btn">Iniciar Sesión</a>
                     <% } %>
         </div>
     </div>

@@ -1,43 +1,95 @@
 <section class="news-grid">
     <div class="news-grid__container">
-        <% if (news && news.length> 0) { %>
-            <div class="news-grid__items">
-                <% news.forEach(item=> { %>
-                    <article class="news-card" data-news-id="<%= item.id %>">
-                        <div class="news-card__image-wrapper">
-                            <img src="<%= item.image %>" alt="<%= item.title %>" class="news-card__image">
-                            <div class="news-card__overlay">
-                                <button class="news-card__btn" onclick="openNewsDetail('<%= item.id %>')">
-                                    Ver Noticia
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="news-card__content">
-                            <span class="news-card__category">
-                                <%= item.category %>
-                            </span>
-                            <h3 class="news-card__title">
-                                <%= item.title %>
-                            </h3>
-                            <p class="news-card__date">
-                                <%= item.date %>
-                            </p>
-
-                            <div class="news-card__footer">
-                                <span class="news-card__likes">
-                                    <i class="icon icon-heart"></i>
-                                    <%= item.likes %>
-                                </span>
-                            </div>
-                        </div>
-                    </article>
-                    <% }) %>
-            </div>
-            <% } else { %>
-                <div class="empty-state">
-                    <p>No hay noticias disponibles</p>
+        <div class="news-grid__items">
+            <article class="news-card">
+                <div class="news-card__image-wrapper">
+                    <div style="background: linear-gradient(135deg, #667eea, #764ba2); width: 100%; height: 240px;">
+                    </div>
                 </div>
-                <% } %>
+                <div class="news-card__content">
+                    <span class="news-card__category">Integrador I</span>
+                    <h3 class="news-card__title">Plataforma de Gestión de Proyectos</h3>
+                    <p class="news-card__date">2025-11-04</p>
+                    <div class="news-card__footer">
+                        <span class="news-card__likes">❤️ 45</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <div class="news-card__image-wrapper">
+                    <div style="background: linear-gradient(135deg, #764ba2, #f093fb); width: 100%; height: 240px;">
+                    </div>
+                </div>
+                <div class="news-card__content">
+                    <span class="news-card__category">Integrador II</span>
+                    <h3 class="news-card__title">Sistema de Autenticación Web</h3>
+                    <p class="news-card__date">2025-11-03</p>
+                    <div class="news-card__footer">
+                        <span class="news-card__likes">❤️ 32</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <div class="news-card__image-wrapper">
+                    <div style="background: linear-gradient(135deg, #f093fb, #667eea); width: 100%; height: 240px;">
+                    </div>
+                </div>
+                <div class="news-card__content">
+                    <span class="news-card__category">Estructura de Datos</span>
+                    <h3 class="news-card__title">Algoritmos de Ordenamiento</h3>
+                    <p class="news-card__date">2025-11-02</p>
+                    <div class="news-card__footer">
+                        <span class="news-card__likes">❤️ 28</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <div class="news-card__image-wrapper">
+                    <div style="background: linear-gradient(135deg, #667eea, #f093fb); width: 100%; height: 240px;">
+                    </div>
+                </div>
+                <div class="news-card__content">
+                    <span class="news-card__category">Base de Datos</span>
+                    <h3 class="news-card__title">Diseño de Modelos de Datos</h3>
+                    <p class="news-card__date">2025-11-01</p>
+                    <div class="news-card__footer">
+                        <span class="news-card__likes">❤️ 38</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <div class="news-card__image-wrapper">
+                    <div style="background: linear-gradient(135deg, #764ba2, #f093fb); width: 100%; height: 240px;">
+                    </div>
+                </div>
+                <div class="news-card__content">
+                    <span class="news-card__category">Programación</span>
+                    <h3 class="news-card__title">Desarrollo de APIs REST</h3>
+                    <p class="news-card__date">2025-10-31</p>
+                    <div class="news-card__footer">
+                        <span class="news-card__likes">❤️ 52</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <div class="news-card__image-wrapper">
+                    <div style="background: linear-gradient(135deg, #f093fb, #667eea); width: 100%; height: 240px;">
+                    </div>
+                </div>
+                <div class="news-card__content">
+                    <span class="news-card__category">Redes</span>
+                    <h3 class="news-card__title">Configuración de Servidores</h3>
+                    <p class="news-card__date">2025-10-30</p>
+                    <div class="news-card__footer">
+                        <span class="news-card__likes">❤️ 22</span>
+                    </div>
+                </div>
+            </article>
+        </div>
     </div>
 </section>

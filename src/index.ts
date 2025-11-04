@@ -1,4 +1,3 @@
-
 import express, { Application, Request, Response, NextFunction } from 'express'
 import path from 'path'
 import session from 'express-session'
@@ -87,7 +86,7 @@ export default class Server {
         this.app.use('/', footerFactory.getRouter())
         this.app.use('/', authFactory.getRouter())
 
-        // Ruta de salud
+        // ✅ RUTA DE SALUD
         this.app.get('/health', (_req: Request, res: Response) => {
             res.json({
                 status: 'OK',
@@ -97,15 +96,66 @@ export default class Server {
             })
         })
 
-        // Ruta principal - Página de inicio
+        // ✅ RUTA PRINCIPAL - PÁGINA DE INICIO
         this.app.get('/', (req: Request, res: Response) => {
             res.render('index', {
                 title: 'INNOVAPRESS - Noticias de Proyectos Integradores',
-                isLoggedIn: (req.session as any)?.userId ? true : false
+                isLoggedIn: ((req as any).session as any)?.userId ? true : false,
+                config: {
+                    logo: '/assets/logo.png',
+                    siteName: 'INNOVAPRESS',
+                    navItems: [
+                        { label: 'Inicio', url: '/', icon: 'home' },
+                        { label: 'Categorías', url: '/categorias', icon: 'grid' },
+                        { label: 'Favoritos', url: '/favoritos', icon: 'heart' },
+                        { label: 'Pauta', url: '/submit-news', icon: 'send' }
+                    ]
+                }
             })
         })
 
-        // Manejo de errores 404
+        // ✅ RUTA FAVORITOS
+        this.app.get('/favoritos', (req: Request, res: Response) => {
+            res.render('favorites/favorites', {
+                isLoggedIn: ((req as any).session as any)?.userId ? true : false
+            })
+        })
+
+        // ✅ RUTA SUBMIT NEWS (PAUTA)
+        this.app.get('/submit-news', (req: Request, res: Response) => {
+            res.render('submitNews/submitNews', {
+                isLoggedIn: ((req as any).session as any)?.userId ? true : false
+            })
+        })
+
+        // ✅ RUTA CATEGORÍAS
+        this.app.get('/categorias', (req: Request, res: Response) => {
+            res.render('categories/categories', {
+                isLoggedIn: ((req as any).session as any)?.userId ? true : false
+            })
+        })
+
+        // ✅ RUTA AUTH (AUTENTICACIÓN)
+        this.app.get('/auth', (req: Request, res: Response) => {
+            res.render('auth/auth', {
+                isLoggedIn: ((req as any).session as any)?.userId ? true : false
+            })
+        })
+
+        // ✅ RUTA DETALLE DE NOTICIA
+        this.app.get('/noticia/:id', (req: Request, res: Response) => {
+            res.render('newsDetail/newsDetail', {
+                isLoggedIn: ((req as any).session as any)?.userId ? true : false,
+                news: {
+                    id: req.params.id,
+                    title: 'Título de la Noticia',
+                    content: 'Contenido de la noticia',
+                    comments: []
+                }
+            })
+        })
+
+        // ✅ MANEJO DE ERRORES 404
         this.app.use((req: Request, res: Response) => {
             res.status(404).render('error/404', {
                 title: 'Página no encontrada',
@@ -113,7 +163,7 @@ export default class Server {
             })
         })
 
-        // Manejo de errores general
+        // ✅ MANEJO DE ERRORES GENERAL
         this.app.use((error: Error, _req: Request, res: Response, _next: NextFunction) => {
             console.error('Error no controlado:', error)
             res.status(500).render('error/500', {
@@ -150,6 +200,7 @@ export default class Server {
             console.log('   GET  /favoritos - Mis favoritos')
             console.log('   GET  /noticia/:id - Detalle de noticia')
             console.log('   GET  /submit-news - Pauta con nosotros')
+            console.log('   GET  /auth - Autenticación')
             console.log('='.repeat(70) + '\n')
         })
     }

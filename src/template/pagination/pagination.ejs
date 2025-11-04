@@ -1,32 +1,12 @@
 <div class="pagination">
     <div class="pagination__container">
-        <% if (data.hasPreviousPage) { %>
-            <a href="?page=<%= data.previousPage %>" class="pagination__btn pagination__btn--prev">
-                ← Anterior
-            </a>
-            <% } %>
-
-                <div class="pagination__numbers">
-                    <% pageNumbers.forEach(num=> { %>
-                        <a href="?page=<%= num %>"
-                            class="pagination__number <%= num === currentPage ? 'pagination__number--active' : '' %>">
-                            <%= num %>
-                        </a>
-                        <% }) %>
-                </div>
-
-                <% if (data.hasNextPage) { %>
-                    <a href="?page=<%= data.nextPage %>" class="pagination__btn pagination__btn--next">
-                        Siguiente →
-                    </a>
-                    <% } %>
+        <button class="pagination__btn pagination__btn--prev" disabled>← Anterior</button>
+        <div class="pagination__numbers">
+            <a href="?page=1" class="pagination__number pagination__number--active">1</a>
+            <a href="?page=2" class="pagination__number">2</a>
+            <a href="?page=3" class="pagination__number">3</a>
+        </div>
+        <a href="?page=2" class="pagination__btn pagination__btn--next">Siguiente →</a>
     </div>
-
-    <p class="pagination__info">
-        Página <strong>
-            <%= currentPage %>
-        </strong> de <strong>
-            <%= config.totalPages %>
-        </strong>
-    </p>
+    <p class="pagination__info">Página <strong>1</strong> de <strong>3</strong></p>
 </div>

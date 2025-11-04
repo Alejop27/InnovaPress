@@ -21,38 +21,25 @@
                     <p>Comparte tu proyecto o noticia con nuestra comunidad</p>
                 </div>
 
-                <form class="submit-form" id="submitForm">
+                <form class="submit-form">
                     <div class="form-group">
-                        <label for="name">Nombre Completo *</label>
-                        <input type="text" id="name" name="name" required class="form-input">
+                        <label for="name">Nombre Completo</label>
+                        <input type="text" id="name" name="name" class="form-input" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="email">Correo Electrónico *</label>
-                        <input type="email" id="email" name="email" required class="form-input">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="subject">Materia/Tema *</label>
-                        <select id="subject" name="subject" required class="form-input">
-                            <option value="">Selecciona una opción</option>
-                            <% config.subjects.forEach(subject=> { %>
-                                <option value="<%= subject %>">
-                                    <%= subject %>
-                                </option>
-                                <% }) %>
-                        </select>
+                        <label for="subject">Materia/Tema</label>
+                        <input type="text" id="subject" name="subject" class="form-input" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="newsInfo">Información de la Noticia *</label>
-                        <textarea id="newsInfo" name="newsInfo" required class="form-textarea" rows="8"
-                            placeholder="Describe el proyecto o noticia que deseas compartir..."></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="image">Foto del Proyecto</label>
-                        <input type="file" id="image" name="image" accept="image/*" class="form-input">
+                        <label for="newsInfo">Información de la Noticia</label>
+                        <textarea id="newsInfo" name="newsInfo" class="form-textarea" rows="8" required></textarea>
                     </div>
 
                     <button type="submit" class="submit-btn">Enviar Propuesta</button>
@@ -61,7 +48,6 @@
         </main>
 
         <%- include('../footer/footer') %>
-            <script src="/js/main.js"></script>
 </body>
 
 </html>

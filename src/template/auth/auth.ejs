@@ -12,52 +12,46 @@
 <body>
     <div class="auth-container">
         <div class="auth__wrapper">
-            <!-- LOGIN -->
             <div class="auth__form auth__form--login" id="loginForm">
                 <h2>Iniciar Sesión</h2>
-                <form>
+                <form method="post" action="/api/auth/login">
                     <div class="form-group">
-                        <input type="email" placeholder="Email" required class="form-input">
+                        <input type="email" name="email" placeholder="Email" class="form-input" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" placeholder="Contraseña" required class="form-input">
+                        <input type="password" name="password" placeholder="Contraseña" class="form-input" required>
                     </div>
                     <button type="submit" class="auth-btn">Iniciar Sesión</button>
                 </form>
-                <p class="auth__toggle">¿No tienes cuenta? <a href="#" onclick="toggleAuthForm()">Regístrate</a></p>
+                <p class="auth__toggle">¿No tienes cuenta? <a href="#"
+                        onclick="toggleAuthForm(); return false;">Regístrate</a></p>
             </div>
 
-            <!-- REGISTRO -->
             <div class="auth__form auth__form--register" id="registerForm" style="display: none;">
                 <h2>Crear Cuenta</h2>
-                <form>
+                <form method="post" action="/api/auth/register">
                     <div class="form-group">
-                        <input type="text" placeholder="Nombre Completo" required class="form-input">
+                        <input type="text" name="name" placeholder="Nombre Completo" class="form-input" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="Email" required class="form-input">
+                        <input type="email" name="email" placeholder="Email" class="form-input" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" placeholder="Contraseña" required class="form-input">
+                        <input type="password" name="password" placeholder="Contraseña" class="form-input" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" placeholder="Confirmar Contraseña" required class="form-input">
+                        <input type="password" name="confirmPassword" placeholder="Confirmar Contraseña"
+                            class="form-input" required>
                     </div>
                     <button type="submit" class="auth-btn">Crear Cuenta</button>
                 </form>
-                <p class="auth__toggle">¿Ya tienes cuenta? <a href="#" onclick="toggleAuthForm()">Inicia Sesión</a></p>
+                <p class="auth__toggle">¿Ya tienes cuenta? <a href="#" onclick="toggleAuthForm(); return false;">Inicia
+                        Sesión</a></p>
             </div>
         </div>
     </div>
 
-    <script>
-        function toggleAuthForm() {
-            document.getElementById('loginForm').style.display =
-                document.getElementById('loginForm').style.display === 'none' ? 'block' : 'none';
-            document.getElementById('registerForm').style.display =
-                document.getElementById('registerForm').style.display === 'none' ? 'block' : 'none';
-        }
-    </script>
+    <script src="/js/main.js"></script>
 </body>
 
 </html>

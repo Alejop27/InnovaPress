@@ -1,21 +1,22 @@
 <section class="categories">
     <div class="categories__container">
-        <h2 class="categories__title">Categorías por Materia</h2>
-
+        <h1>Categorías</h1>
         <div class="categories__grid">
-            <% config.categories.forEach(category=> { %>
-                <a href="/categorias?category=<%= category.subject %>" class="category-card">
-                    <div class="category-card__icon">
-                        <i class="icon icon-<%= category.icon %>"></i>
-                    </div>
-                    <h3 class="category-card__name">
-                        <%= category.name %>
-                    </h3>
-                    <p class="category-card__description">
-                        <%= category.description %>
-                    </p>
-                </a>
-                <% }) %>
+            <div class="category-card">
+                <div class="category-card__icon">📚</div>
+                <h3 class="category-card__name">Integrador I</h3>
+                <p class="category-card__description">Proyectos de primer integrador</p>
+            </div>
+            <div class="category-card">
+                <div class="category-card__icon">💻</div>
+                <h3 class="category-card__name">Integrador II</h3>
+                <p class="category-card__description">Proyectos de segundo integrador</p>
+            </div>
+            <div class="category-card">
+                <div class="category-card__icon">📊</div>
+                <h3 class="category-card__name">Estructura de Datos</h3>
+                <p class="category-card__description">Algoritmos y estructuras</p>
+            </div>
         </div>
     </div>
 </section>

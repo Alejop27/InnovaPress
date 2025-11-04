@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= news.title %>
+    </title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/newsDetail.css">
+    <link rel="stylesheet" href="/css/footer.css">
+</head>
+
+<body>
+    <%- include('../header/header') %>
+
+        <main class="news-detail">
+            <div class="news-detail__container">
+                <!-- IMAGEN PRINCIPAL -->
+                <img src="<%= news.image %>" alt="<%= news.title %>" class="news-detail__image">
+
+                <!-- CONTENIDO -->
+                <article class="news-detail__content">
+                    <span class="news-detail__category">
+                        <%= news.category %>
+                    </span>
+                    <h1 class="news-detail__title">
+                        <%= news.title %>
+                    </h1>
+                    <p class="news-detail__subtitle">
+                        <%= news.subtitle %>
+                    </p>
+
+                    <div class="news-detail__meta">
+                        <span class="news-detail__author">Por: <%= news.author %></span>
+                        <span class="news-detail__date">
+                            <%= news.date %>
+                        </span>
+                    </div>
+
+                    <!-- CONTENIDO PRINCIPAL -->
+                    <div class="news-detail__body">
+                        <%- news.content %>
+                    </div>
+
+                    <!-- ACCIONES -->
+                    <div class="news-detail__actions">
+                        <button class="action-btn action-btn--like" onclick="toggleLike('<%= news.id %>')">
+                            <i class="icon icon-heart"></i>
+                            <%= news.likes %> Likes
+                        </button>
+                        <button class="action-btn action-btn--favorite" onclick="toggleFavorite('<%= news.id %>')">
+                            <i class="icon icon-bookmark"></i>
+                            Agregar a Favoritos
+                        </button>
+                        <button class="action-btn action-btn--share">
+                            <i class="icon icon-share"></i>
+                            Compartir
+                        </button>
+                    </div>
+
+                    <!-- COMENTARIOS -->
+                    <section class="comments">
+                        <h3 class="comments__title">Comentarios (<%= news.comments.length %>)</h3>
+
+                        <% if (news.comments && news.comments.length> 0) { %>
+                            <div class="comments__list">
+                                <% news.comments.forEach(comment=> { %>
+                                    <div class="comment">
+                                        <div class="comment__header">
+                                            <strong class="comment__author">
+                                                <%= comment.author %>
+                                            </strong>
+                                            <span class="comment__date">
+                                                <%= comment.date %>
+                                            </span>
+                                            <% if (comment.docent) { %>
+                                                <span class="comment__badge">Docente</span>
+                                                <% } %>
+                                        </div>
+                                        <p class="comment__text">
+                                            <%= comment.text %>
+                                        </p>
+                                    </div>
+                                    <% }) %>
+                            </div>
+                            <% } else { %>
+                                <p class="comments__empty">Sin comentarios aún</p>
+                                <% } %>
+
+                                    <!-- FORMULARIO DE COMENTARIO -->
+                                    <form class="comment-form">
+                                        <input type="text" placeholder="Tu nombre" required class="comment-form__input">
+                                        <textarea placeholder="Tu comentario..." required
+                                            class="comment-form__textarea"></textarea>
+                                        <button type="submit" class="comment-form__btn">Publicar Comentario</button>
+                                    </form>
+                    </section>
+                </article>
+            </div>
+        </main>
+
+        <%- include('../footer/footer') %>
+            <script src="/js/main.js"></script>
+</body>
+
+</html>

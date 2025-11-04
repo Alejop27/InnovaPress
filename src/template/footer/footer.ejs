@@ -1,0 +1,51 @@
+<footer class="footer">
+    <div class="footer__container">
+        <div class="footer__content">
+            <!-- LINKS -->
+            <div class="footer__section">
+                <h3 class="footer__title">Enlaces Rápidos</h3>
+                <ul class="footer__links">
+                    <% config.quickLinks.forEach(link=> { %>
+                        <li><a href="<%= link.url %>">
+                                <%= link.label %>
+                            </a></li>
+                        <% }) %>
+                </ul>
+            </div>
+
+            <!-- REDES SOCIALES -->
+            <div class="footer__section">
+                <h3 class="footer__title">Síguenos</h3>
+                <div class="social-links">
+                    <a href="<%= config.socialLinks.facebook %>" target="_blank" class="social-link">
+                        <i class="icon icon-facebook"></i>
+                    </a>
+                    <a href="<%= config.socialLinks.twitter %>" target="_blank" class="social-link">
+                        <i class="icon icon-twitter"></i>
+                    </a>
+                    <a href="<%= config.socialLinks.instagram %>" target="_blank" class="social-link">
+                        <i class="icon icon-instagram"></i>
+                    </a>
+                    <a href="<%= config.socialLinks.linkedin %>" target="_blank" class="social-link">
+                        <i class="icon icon-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- CONTACTO -->
+            <div class="footer__section">
+                <h3 class="footer__title">Contacto</h3>
+                <p>Email: <a href="mailto:<%= config.contactEmail %>">
+                        <%= config.contactEmail %>
+                    </a></p>
+            </div>
+        </div>
+
+        <!-- COPYRIGHT -->
+        <div class="footer__bottom">
+            <p>
+                <%= config.copyrightText %>
+            </p>
+        </div>
+    </div>
+</footer>

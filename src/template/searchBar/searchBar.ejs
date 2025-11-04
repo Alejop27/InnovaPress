@@ -1,0 +1,23 @@
+<section class="search-bar">
+    <div class="search-bar__container">
+        <div class="search-bar__input-group">
+            <input type="text" class="search-bar__input" placeholder="<%= config.placeholder %>" id="searchInput"
+                autocomplete="off">
+            <button class="search-bar__btn">
+                <i class="icon icon-search"></i>
+            </button>
+        </div>
+
+        <% if (config.enableFilters) { %>
+            <div class="search-bar__filters">
+                <% filters.forEach(filter=> { %>
+                    <button class="filter-btn" data-filter="<%= filter %>">
+                        <%= filter %>
+                    </button>
+                    <% }) %>
+            </div>
+            <% } %>
+    </div>
+
+    <div class="search-results" id="searchResults" style="display: none;"></div>
+</section>

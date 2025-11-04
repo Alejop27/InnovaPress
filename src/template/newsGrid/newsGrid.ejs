@@ -1,0 +1,43 @@
+<section class="news-grid">
+    <div class="news-grid__container">
+        <% if (news && news.length> 0) { %>
+            <div class="news-grid__items">
+                <% news.forEach(item=> { %>
+                    <article class="news-card" data-news-id="<%= item.id %>">
+                        <div class="news-card__image-wrapper">
+                            <img src="<%= item.image %>" alt="<%= item.title %>" class="news-card__image">
+                            <div class="news-card__overlay">
+                                <button class="news-card__btn" onclick="openNewsDetail('<%= item.id %>')">
+                                    Ver Noticia
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="news-card__content">
+                            <span class="news-card__category">
+                                <%= item.category %>
+                            </span>
+                            <h3 class="news-card__title">
+                                <%= item.title %>
+                            </h3>
+                            <p class="news-card__date">
+                                <%= item.date %>
+                            </p>
+
+                            <div class="news-card__footer">
+                                <span class="news-card__likes">
+                                    <i class="icon icon-heart"></i>
+                                    <%= item.likes %>
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+                    <% }) %>
+            </div>
+            <% } else { %>
+                <div class="empty-state">
+                    <p>No hay noticias disponibles</p>
+                </div>
+                <% } %>
+    </div>
+</section>

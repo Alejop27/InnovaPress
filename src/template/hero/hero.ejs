@@ -1,0 +1,18 @@
+<section class="hero">
+    <div class="hero__content">
+        <h1 class="hero__title">
+            <%= config.title %>
+        </h1>
+        <p class="hero__subtitle">
+            <%= config.subtitle %>
+        </p>
+    </div>
+
+    <div class="hero__collage">
+        <% config.images.forEach((image, index)=> { %>
+            <div class="hero__image-wrapper hero__image-wrapper--<%= index + 1 %>">
+                <img src="<%= image.url %>" alt="<%= image.alt %>" class="hero__image">
+            </div>
+            <% }) %>
+    </div>
+</section>

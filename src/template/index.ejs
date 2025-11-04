@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/hero.css">
+    <link rel="stylesheet" href="/css/newsGrid.css">
+    <link rel="stylesheet" href="/css/searchBar.css">
+    <link rel="stylesheet" href="/css/pagination.css">
+    <link rel="stylesheet" href="/css/footer.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <%- include('header/header') %>
+
+        <!-- HERO BANNER -->
+        <%- include('hero/hero') %>
+
+            <!-- SEARCH BAR -->
+            <div class="search-section">
+                <%- include('searchBar/searchBar') %>
+            </div>
+
+            <!-- MAIN CONTENT -->
+            <main class="main-content">
+                <!-- NEWS GRID -->
+                <%- include('newsGrid/newsGrid') %>
+
+                    <!-- PAGINATION -->
+                    <div class="pagination-section">
+                        <%- include('pagination/pagination') %>
+                    </div>
+            </main>
+
+            <!-- FOOTER -->
+            <%- include('footer/footer') %>
+
+                <!-- SCRIPTS -->
+                <script src="/js/main.js"></script>
+</body>
+
+</html>

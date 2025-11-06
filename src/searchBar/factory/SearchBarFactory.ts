@@ -1,8 +1,6 @@
-
 import SearchBarModel from '../model/SearchBarModel'
 import SearchBarView from '../view/SearchBarView'
 import SearchBarRouter from '../router/SearchBarRouter'
-import NewsRepository from '../../repository/NewsRepository'
 
 export default class SearchBarFactory {
     private model: SearchBarModel
@@ -16,7 +14,7 @@ export default class SearchBarFactory {
     }
 
     static create(): SearchBarFactory {
-        const model = new SearchBarModel(NewsRepository)
+        const model = new SearchBarModel()
         const view = new SearchBarView(model)
         const router = new SearchBarRouter(view)
         return new SearchBarFactory(model, view, router)
@@ -29,7 +27,7 @@ export default class SearchBarFactory {
     getModel() {
         return this.model
     }
-    
+
     getView() {
         return this.view
     }

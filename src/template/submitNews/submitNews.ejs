@@ -4,50 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pauta con Nosotros - INNOVAPRESS</title>
+    <title>Pauta - INNOVAPRESS</title>
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/submitNews.css">
-    <link rel="stylesheet" href="/css/footer.css">
 </head>
 
 <body>
-    <%- include('../header/header') %>
+    <!-- QUITA ESTO: <%- include('../header/header') %> -->
 
-        <main class="submit-news">
-            <div class="submit-news__container">
-                <div class="submit-news__header">
-                    <h1>Pauta con Nosotros</h1>
-                    <p>Comparte tu proyecto o noticia con nuestra comunidad</p>
-                </div>
+    <main class="submit-news">
+        <div class="submit-news__container">
+            <h1>Pauta con Nosotros</h1>
+            <a href="/" class="back-btn">← Volver</a>
 
-                <form class="submit-form">
-                    <div class="form-group">
-                        <label for="name">Nombre Completo</label>
-                        <input type="text" id="name" name="name" class="form-input" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" class="form-input" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="subject">Materia/Tema</label>
-                        <input type="text" id="subject" name="subject" class="form-input" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="newsInfo">Información de la Noticia</label>
-                        <textarea id="newsInfo" name="newsInfo" class="form-textarea" rows="8" required></textarea>
-                    </div>
-
-                    <button type="submit" class="submit-btn">Enviar Propuesta</button>
-                </form>
-            </div>
-        </main>
-
-        <%- include('../footer/footer') %>
+            <form method="POST" action="/api/submit-news">
+                <input type="text" name="name" placeholder="Nombre" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="text" name="subject" placeholder="Tema" required>
+                <textarea name="newsInfo" placeholder="Contenido..." rows="8" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </main>
 </body>
 
 </html>

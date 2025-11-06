@@ -2,7 +2,7 @@
 import NewsGridModel from '../model/NewsGridModel'
 import NewsGridView from '../view/NewsGridView'
 import NewsGridRouter from '../router/NewsGridRouter'
-import NewsRepository from '../../repository/NewsRepository'
+
 
 export default class NewsGridFactory {
     private model: NewsGridModel
@@ -15,12 +15,13 @@ export default class NewsGridFactory {
         this.router = router
     }
 
-    static create(): NewsGridFactory {
-        const model = new NewsGridModel(NewsRepository)
-        const view = new NewsGridView(model)
-        const router = new NewsGridRouter(view)
-        return new NewsGridFactory(model, view, router)
-    }
+static create() {
+    const model = new NewsGridModel()
+    const view = new NewsGridView(model)
+    const router = new NewsGridRouter(view)
+    return new NewsGridFactory(model, view, router)
+}
+
 
     getRouter() {
         return this.router.router

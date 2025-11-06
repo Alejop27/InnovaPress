@@ -1,22 +1,27 @@
-<section class="categories">
-    <div class="categories__container">
-        <h1>Categorías</h1>
-        <div class="categories__grid">
-            <div class="category-card">
-                <div class="category-card__icon">📚</div>
-                <h3 class="category-card__name">Integrador I</h3>
-                <p class="category-card__description">Proyectos de primer integrador</p>
-            </div>
-            <div class="category-card">
-                <div class="category-card__icon">💻</div>
-                <h3 class="category-card__name">Integrador II</h3>
-                <p class="category-card__description">Proyectos de segundo integrador</p>
-            </div>
-            <div class="category-card">
-                <div class="category-card__icon">📊</div>
-                <h3 class="category-card__name">Estructura de Datos</h3>
-                <p class="category-card__description">Algoritmos y estructuras</p>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorías - INNOVAPRESS</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <!-- QUITA ESTO: <%- include('../header/header') %> -->
+
+    <main class="categories">
+        <div class="categories__container">
+            <h1>Categorías</h1>
+            <a href="/" class="back-btn">← Volver</a>
+            <div class="categories__grid">
+                <a href="/?category=integrador-1" class="category-card">Integrador I</a>
+                <a href="/?category=integrador-2" class="category-card">Integrador II</a>
+                <a href="/?category=estructuras" class="category-card">Estructura de Datos</a>
             </div>
         </div>
-    </div>
-</section>
+    </main>
+</body>
+
+</html>

@@ -1,59 +1,57 @@
-// src/favorites/view/FavoritesView.ts
+import NewsRepository from '../../repository/NewsRepository'
 
-import { Request, Response } from 'express'
-import FavoritesModel from '../model/FavoritesModel'
+export default class FavoritesModel {
+    private repository: NewsRepository
+    private favorites: string[] = []
 
-export default class FavoritesView {
-    constructor(private model: FavoritesModel) { }
-
-    render(req: Request, res: Response): void {
-        try {
-            const userId = ((req as any).session as any)?.userId || 'user-1'  
-            this.model.loadUserFavorites(userId)
-
-            const config = this.model.getConfig()
-            res.render('favorites/favorites', { config })
-        } catch (error) {
-            console.error('Error en FavoritesView:', error)
-            res.status(500).send('Error')
-        }
+    constructor() {
+        this.repository = new NewsRepository()
+        this.loadFavorites()
     }
 
-    renderPartial(req: Request, res: Response): void {
-        try {
-            const userId = ((req as any).session as any)?.userId || 'user-1' 
-            this.model.loadUserFavorites(userId)
-
-            const config = this.model.getConfig()
-            res.json({ success: true, data: config })
-        } catch (error) {
-            res.status(500).json({ success: false, error })
-        }
+    private loadFavorites(): void {
+        // Cargar favoritos desde localStorage o sesión
+        this.favorites = []
     }
 
-    addFavorite(req: Request, res: Response): void {
-        try {
-            const { newsId } = req.body
-            const userId = ((req as any).session as any)?.userId || 'user-1'  
-            this.model.loadUserFavorites(userId)
-            this.model.addToFavorites(newsId)
-
-            res.json({ success: true, message: 'Agregado a favoritos' })
-        } catch (error) {
-            res.status(500).json({ success: false, error })
-        }
+    getFavorites(): any[] {
+        const allNews = this.repository.getAllNews()
+        return allNews.filter((n: any) => this.favorites.includes(n.id))
     }
 
-    removeFavorite(req: Request, res: Response): void {
-        try {
-            const { newsId } = req.body
-            const userId = ((req as any).session as any)?.userId || 'user-1'  
-            this.model.loadUserFavorites(userId)
-            this.model.removeFromFavorites(newsId)
-
-            res.json({ success: true, message: 'Eliminado de favoritos' })
-        } catch (error) {
-            res.status(500).json({ success: false, error })
+    addFavorite(newsId: string): boolean {
+        if (!this.favorites.includes(newsId)) {
+            this.favorites.push(newsId)
+            this.saveFavorites()
+            return true
         }
+        return false
+    }
+
+    removeFavorite(newsId: string): boolean {
+        const index = this.favorites.indexOf(newsId)
+        if (index > -1) {
+            this.favorites.splice(index, 1)
+            this.saveFavorites()
+            return true
+        }
+        return false
+    }
+
+    isFavorite(newsId: string): boolean {
+        return this.favorites.includes(newsId)
+    }
+
+    getFavoritesCount(): number {
+        return this.favorites.length
+    }
+
+    private saveFavorites(): void {
+        // Guardar favoritos en localStorage o sesión
+    }
+
+    clearFavorites(): void {
+        this.favorites = []
+        this.saveFavorites()
     }
 }

@@ -1,78 +1,58 @@
-
-import { DetailNews, DetailComment } from '../types/NewsDetailTypes'
 import NewsRepository from '../../repository/NewsRepository'
 
 export default class NewsDetailModel {
-    private currentNews: DetailNews | null = null
-    private userFavorited: boolean = false
+    private repository: NewsRepository
+    private newsId: string = ''
 
-    constructor(private repository: typeof NewsRepository) { }
-
-    loadNews(newsId: string): DetailNews | null {
-        const news = this.repository.getNewsById(newsId)
-        if (!news) return null
-
-        this.currentNews = {
-            id: news.id,
-            title: news.title,
-            subtitle: news.summary,
-            content: news.fullContent,
-            image: news.image,
-            category: news.category,
-            subject: news.subject,
-            date: news.date,
-            author: news.author,
-            likes: news.likes,
-            isFavorite: false,
-            comments: news.comments.map(c => ({
-                id: c.id,
-                author: c.author,
-                text: c.text,
-                date: c.date,
-                docent: true
-            }))
-        }
-
-        return this.currentNews
+    constructor() {
+        this.repository = new NewsRepository()
     }
 
-    getCurrentNews(): DetailNews | null {
-        return this.currentNews
+    setNewsId(id: string): void {
+        this.newsId = id
     }
 
-    addLike(newsId: string): void {
-        this.repository.updateLikes(newsId)
-        if (this.currentNews) {
-            this.currentNews.likes++
-        }
+    getNews(): any {
+        if (!this.newsId) return null
+        return this.repository.getNewsById(this.newsId)
     }
 
-    addComment(newsId: string, author: string, text: string): void {
-        const dateStr = new Date().toISOString().split('T')[0] as string 
-        const comment: DetailComment = {
+    getComments(): any[] {
+        const news = this.getNews()
+        if (!news) return []
+        return news.comments.map((c: any) => ({
+            id: c.id,
+            author: c.author,
+            text: c.text,
+            date: c.date
+        }))
+    }
+
+    addLike(): boolean {
+        if (!this.newsId) return false
+        return this.repository.addLike(this.newsId)
+    }
+
+    addComment(author: string, text: string): boolean {
+        if (!this.newsId) return false
+
+        const comment: any = {
             id: Date.now().toString(),
             author,
             text,
-            date: dateStr,
-            docent: false
+            date: new Date().toISOString().split('T')[0]
         }
 
-        this.repository.addComment(newsId, {
-            id: comment.id,
-            author: comment.author,
-            text: comment.text,
-            date: comment.date
-        })
-
-        if (this.currentNews) {
-            this.currentNews.comments.push(comment)
-        }
+        return this.repository.addComment(this.newsId, comment)
     }
 
-    toggleFavorite(): void {
-        this.userFavorited = !this.userFavorited
-        if (this.currentNews) {
-            this.currentNews.isFavorite = this.userFavorited
-        }
+    getLikes(): number {
+        const news = this.getNews()
+        return news ? news.likes : 0
     }
+
+    getCommentCount(): number {
+        return this.getComments().length
+    }
+
 }

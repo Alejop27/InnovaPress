@@ -1,46 +1,57 @@
-
-import { FavoriteNews, FavoritesConfig } from '../types/FavoritesTypes'
 import NewsRepository from '../../repository/NewsRepository'
 
 export default class FavoritesModel {
-    private currentUserId: string = 'user-1'
-    private userFavorites: FavoriteNews[] = []
+    private repository: NewsRepository
+    private favorites: string[] = []
 
-    constructor(private repository: typeof NewsRepository) { }
-
-    loadUserFavorites(userId: string = 'user-1'): FavoriteNews[] {
-        this.currentUserId = userId
-        const favoriteNews = this.repository.getUserFavorites(userId)
-
-        this.userFavorites = favoriteNews.map(n => ({
-            id: n.id,
-            title: n.title,
-            image: n.image,
-            category: n.subject,
-            date: n.date
-        }))
-
-        return this.userFavorites
+    constructor() {
+        this.repository = new NewsRepository()
+        this.loadFavorites()
     }
 
-    getConfig(): FavoritesConfig {
-        return {
-            userFavorites: this.userFavorites,
-            totalFavorites: this.userFavorites.length
+    private loadFavorites(): void {
+        // Cargar favoritos desde localStorage o sesión
+        this.favorites = []
+    }
+
+    getFavorites(): any[] {
+        const allNews = this.repository.getAllNews()
+        return allNews.filter((n: any) => this.favorites.includes(n.id))
+    }
+
+    addFavorite(newsId: string): boolean {
+        if (!this.favorites.includes(newsId)) {
+            this.favorites.push(newsId)
+            this.saveFavorites()
+            return true
         }
+        return false
     }
 
-    addToFavorites(newsId: string): void {
-        this.repository.addFavorite(this.currentUserId, newsId)
-        this.loadUserFavorites(this.currentUserId)
+    removeFavorite(newsId: string): boolean {
+        const index = this.favorites.indexOf(newsId)
+        if (index > -1) {
+            this.favorites.splice(index, 1)
+            this.saveFavorites()
+            return true
+        }
+        return false
     }
 
-    removeFromFavorites(newsId: string): void {
-        this.repository.removeFavorite(this.currentUserId, newsId)
-        this.loadUserFavorites(this.currentUserId)
+    isFavorite(newsId: string): boolean {
+        return this.favorites.includes(newsId)
     }
 
-    getFavoriteCount(): number {
-        return this.userFavorites.length
+    getFavoritesCount(): number {
+        return this.favorites.length
+    }
+
+    private saveFavorites(): void {
+        // Guardar favoritos en localStorage o sesión
+    }
+
+    clearFavorites(): void {
+        this.favorites = []
+        this.saveFavorites()
     }
 }

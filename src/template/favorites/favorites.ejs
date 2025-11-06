@@ -6,26 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis Favoritos - INNOVAPRESS</title>
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/favorites.css">
-    <link rel="stylesheet" href="/css/footer.css">
 </head>
 
 <body>
-    <%- include('../header/header') %>
+    <!-- QUITA ESTO: <%- include('../header/header') %> -->
 
-        <main class="favorites">
-            <div class="favorites__container">
-                <h1 class="favorites__title">Mis Noticias Favoritas</h1>
-                <p class="favorites__count">Total: 0 favoritos</p>
-                <div class="empty-state">
-                    <p>No tienes noticias favoritas aún</p>
-                    <a href="/" class="empty-state__btn">Explorar noticias</a>
-                </div>
+    <main class="favorites">
+        <div class="favorites__container">
+            <h1>Mis Noticias Favoritas</h1>
+            <a href="/" class="back-btn">← Volver</a>
+            <div class="empty-state">
+                <p>No tienes favoritos aún</p>
             </div>
-        </main>
-
-        <%- include('../footer/footer') %>
+        </div>
+    </main>
 </body>
 
 </html>

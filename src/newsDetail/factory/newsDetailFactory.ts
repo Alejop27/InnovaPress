@@ -1,8 +1,6 @@
-
 import NewsDetailModel from '../model/NewsDetailModel'
 import NewsDetailView from '../view/NewsDetailView'
 import NewsDetailRouter from '../router/NewsDetailRouter'
-import NewsRepository from '../../repository/NewsRepository'
 
 export default class NewsDetailFactory {
     private model: NewsDetailModel
@@ -16,7 +14,7 @@ export default class NewsDetailFactory {
     }
 
     static create(): NewsDetailFactory {
-        const model = new NewsDetailModel(NewsRepository)
+        const model = new NewsDetailModel()  // ✅ SIN parámetros
         const view = new NewsDetailView(model)
         const router = new NewsDetailRouter(view)
         return new NewsDetailFactory(model, view, router)

@@ -1,42 +1,39 @@
-
-import { SearchConfig, SearchResult } from '../types/SearchBarTypes'
 import NewsRepository from '../../repository/NewsRepository'
 
 export default class SearchBarModel {
-    private placeholder: string = 'Buscar noticias, proyectos...'
-    private enableFilters: boolean = true
-    private filterOptions: string[] = [
-        'Integrador I',
-        'Integrador II',
-        'Integrador III',
-        'Ing Software',
-        'Estructura Datos',
-        'Sistemas Distribuidos'
-    ]
+    private repository: NewsRepository
 
-    constructor(private repository: typeof NewsRepository) { }
+    constructor() {
+        this.repository = new NewsRepository()
+    }
 
-    getConfig(): SearchConfig {
+    search(query: string): any[] {
+        if (!query || query.trim() === '') {
+            return []
+        }
+        return this.repository.searchNews(query)
+    }
+
+    getRecentSearches(): string[] {
+        return []
+    }
+
+    clearSearch(): void {
+        // limpiar búsqueda
+    }
+
+    getConfig(): any {
         return {
-            placeholder: this.placeholder,
-            enableFilters: this.enableFilters,
-            filterOptions: this.filterOptions
+            placeholder: 'Buscar noticias, proyectos...',
+            minChars: 2
         }
     }
 
-    search(query: string): SearchResult[] {
-        if (!query || query.length < 2) return []
-
-        const results = this.repository.searchNews(query)
-        return results.map(n => ({
-            id: n.id,
-            title: n.title,
-            category: n.subject,
-            date: n.date
-        }))
-    }
-
-    getFilters(): string[] {
-        return this.filterOptions
+    filterResults(results: any[], category?: string): any[] {
+        if (!category) {
+            return results
+        }
+        return results.filter((n: any) => n.category === category)
     }
 }
+

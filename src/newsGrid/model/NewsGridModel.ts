@@ -1,65 +1,75 @@
+import NewsRepository from '../../repository/NewsRepository'
 
-import { NewsGridConfig, GridNews } from '../types/NewsGridTypes'
-import NewsRepository, { News } from '../../repository/NewsRepository'
+interface News {
+    id: string
+    title: string
+    summary: string
+    category: string
+    content: string
+    image: string
+    author: string
+    date: string
+    likes: number
+    comments: any[]
+}
 
 export default class NewsGridModel {
-    private itemsPerPage: number = 12
-    private layout: 'grid' | 'masonry' = 'grid'
-    private columns: number = 3
-    private enableModal: boolean = true
+    private repository: NewsRepository
     private currentPage: number = 1
-    private selectedCategory: string = 'all'
+    private selectedCategory: string = ''
+    private pageSize: number = 6
 
-    constructor(private repository: typeof NewsRepository) { }
-
-    getConfig(): NewsGridConfig {
-        return {
-            itemsPerPage: this.itemsPerPage,
-            layout: this.layout,
-            columns: this.columns,
-            enableModal: this.enableModal
-        }
+    constructor() {
+        this.repository = new NewsRepository()
     }
 
-    getGridNews(page: number = 1): GridNews[] {
-        let news = this.repository.getAllNews()
+    getGridNews(page: number = 1): News[] {
+        const news = this.repository.getAllNews()
+        const filtered = this.selectedCategory 
+            ? news.filter((n: any) => n.category === this.selectedCategory)
+            : news
 
-        if (this.selectedCategory !== 'all') {
-            news = news.filter(n => n.subject === this.selectedCategory)
-        }
-
-        const start = (page - 1) * this.itemsPerPage
-        const end = start + this.itemsPerPage
-
-        return news.slice(start, end).map(n => ({
-            id: n.id,
-            title: n.title,
-            image: n.image,
-            category: n.subject,
-            date: n.date,
-            likes: n.likes
-        }))
-    }
-
-    getTotalPages(): number {
-        const total = this.repository.getAllNews().length
-        return Math.ceil(total / this.itemsPerPage)
-    }
-
-    setCategory(category: string): void {
-        this.selectedCategory = category
-        this.currentPage = 1
-    }
-
-    getCurrentPage(): number {
-        return this.currentPage
+        const start = (page - 1) * this.pageSize
+        return filtered.slice(start, start + this.pageSize)
     }
 
     setCurrentPage(page: number): void {
         this.currentPage = page
     }
 
-    getNewsByType(): News[] {
+    getCurrentPage(): number {
+        return this.currentPage
+    }
+
+    setCategory(category: string): void {
+        this.selectedCategory = category
+    }
+
+    getCategory(): string {
+        return this.selectedCategory
+    }
+
+    getTotalPages(): number {
+        const news = this.repository.getAllNews()
+        const filtered = this.selectedCategory 
+            ? news.filter((n: any) => n.category === this.selectedCategory)
+            : news
+        return Math.ceil(filtered.length / this.pageSize)
+    }
+
+    getConfig(): any {
+        return {
+            pageSize: this.pageSize,
+            currentPage: this.currentPage,
+            selectedCategory: this.selectedCategory
+        }
+    }
+
+    getNews(): News[] {
         return this.repository.getAllNews()
+    }
+
+    getNewsByPage(page: number): News[] {
+        return this.getGridNews(page)
     }
 }

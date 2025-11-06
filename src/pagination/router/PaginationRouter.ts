@@ -1,6 +1,6 @@
 
 import { Router } from 'express'
-import PaginationView from '../view/PAginationView'
+import PaginationView from '../view/PaginationView'
 
 export default class PaginationRouter {
     public readonly router: Router

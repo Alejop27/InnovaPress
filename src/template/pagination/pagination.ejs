@@ -1,12 +1,37 @@
 <div class="pagination">
     <div class="pagination__container">
-        <button class="pagination__btn pagination__btn--prev" disabled>← Anterior</button>
-        <div class="pagination__numbers">
+        <button class="pagination__btn pagination__btn--prev" id="prevBtn">← Anterior</button>
+        <div class="pagination__numbers" id="pageNumbers">
             <a href="?page=1" class="pagination__number pagination__number--active">1</a>
             <a href="?page=2" class="pagination__number">2</a>
             <a href="?page=3" class="pagination__number">3</a>
         </div>
-        <a href="?page=2" class="pagination__btn pagination__btn--next">Siguiente →</a>
+        <a href="?page=2" class="pagination__btn pagination__btn--next" id="nextBtn">Siguiente →</a>
     </div>
-    <p class="pagination__info">Página <strong>1</strong> de <strong>3</strong></p>
+    <p class="pagination__info">Página <strong id="currentPage">1</strong> de <strong id="totalPages">3</strong></p>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const params = new URLSearchParams(window.location.search)
+        const currentPage = parseInt(params.get('page')) || 1
+
+        // Actualizar página actual
+        document.getElementById('currentPage').textContent = currentPage
+
+        // Deshabilitar botón anterior en página 1
+        if (currentPage === 1) {
+            document.getElementById('prevBtn').disabled = true
+        } else {
+            document.getElementById('prevBtn').href = `?page=${currentPage - 1}`
+        }
+
+        // Resaltar página actual
+        document.querySelectorAll('.pagination__number').forEach((btn, idx) => {
+            btn.classList.remove('pagination__number--active')
+            if (idx + 1 === currentPage) {
+                btn.classList.add('pagination__number--active')
+            }
+        })
+    })
+</script>

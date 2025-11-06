@@ -1,0 +1,226 @@
+{
+  "news": [
+    {
+      "id": "1",
+      "title": "Grupo viszla",
+      "summary": "Grupo encargado de usuarios para nexus battles IV",
+      "category": "Integrador I",
+      "content": "El grupo vizsla era el encargado del modulo usuarios para el juego NEXUS BATTLE IV, sin embargo en su presentacion no supieron explicar su desarrollo y solo presentaron excusas, el servidor de correos no funciono, lo unico que presentaron fue el registro de usuarios y login.",
+      "image": "/assets/vizsla.jpg",
+      "author": "Grupo Viszla",
+      "date": "2025-10-28",
+      "likes": 12,
+      "comments": [
+        {
+          "id": "1",
+          "author": "Profe Claudia",
+          "text": "Uno como profesor no puede evaluar un intento sino el producto",
+          "date": "2025-10-28"
+        },
+        {
+          "id": "2",
+          "author": "Profe Briceño",
+          "text": "Directamente no habia producto de valor",
+          "date": "2025-10-28"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Grupo Eldar",
+      "summary": "Grupo encargado de inventario y la interfaz para nexus battles IV",
+      "category": "Integrador I",
+      "content": "El grupo Eldar era el encargado del modulo inventario y la interfaz para el juego NEXUS BATTLE IV, su presentacion fue buena, explicaron bien su trabajo en detalle.",
+      "image": "/assets/driftmiku.png",
+      "author": "Grupo Eldar",
+      "date": "2025-10-28",
+      "likes": 45,
+      "comments": [
+        {
+          "id": "1",
+          "author": "Profe Lenin",
+          "text": "Varios diagramas tenian errores, pero el trabajo en general estaba bien",
+          "date": "2025-10-28"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Grupo Kryze",
+      "summary": "Grupo encargado del juego para Nexus Battles IV",
+      "category": "Integrador I",
+      "content": "El grupo Kryze fue el encargado del desarrollo del juego para nexus battles 4, mostro de manera clara, correcta y optima el marco, metodologia y resultados de su proyecto.",
+      "image": "/assets/kryze.jpg",
+      "author": "Grupo Kryze",
+      "date": "2025-10-28",
+      "likes": 89,
+      "comments": [
+        {
+          "id": "1",
+          "author": "Todos los profesores",
+          "text": "Excelente trabajo y una excelente presentacion",
+          "date": "2025-10-28"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Grupo Rook",
+      "summary": "Grupo encargado del modulo torneo y subastas",
+      "category": "Integrador II",
+      "content": "El grupo Rook era el encargado de los modulos torneo y subastas, su presentacion fue buena, sin embargo durante ciertos momentos se veia poco entusiasmo.",
+      "image": "/assets/rook.jpg",
+      "author": "Grupo Rook",
+      "date": "2025-10-28",
+      "likes": 34,
+      "comments": []
+    },
+    {
+      "id": "5",
+      "title": "Grupo wren",
+      "summary": "Grupo encargado de la IA del juego Nexus Battle IV",
+      "category": "Integrador II",
+      "content": "El grupo wren fue el encargado de desarrollar la IA para las batallas, a pesar de una buena exposicion, tuvieron bastantes inconvenientes.",
+      "image": "/assets/wren.jpg",
+      "author": "Grupo Wren",
+      "date": "2025-10-28",
+      "likes": 28,
+      "comments": []
+    },
+    {
+      "id": "6",
+      "title": "Urban Shoes",
+      "summary": "Sistema de inventario de zapatos",
+      "category": "Proyecto Integrador",
+      "content": "El grupo urban shoes presento su sistema de inventario de zapatos, pudiendo llevar un control del stock, actualizar la informacion del mismo.",
+      "image": "/assets/UrbanShoes.jpg",
+      "author": "Urban Shoes Team",
+      "date": "2025-10-29",
+      "likes": 56,
+      "comments": []
+    },
+    {
+      "id": "7",
+      "title": "UPB Study +",
+      "summary": "Red social academica para estudiantes",
+      "category": "Proyecto Integrador",
+      "content": "El grupo upb study + presento su red social para los estudiantes y la comunidad educativa enfocada en el estudio y aprendizaje.",
+      "image": "/assets/upbstudy.jpg",
+      "author": "UPB Study+ Team",
+      "date": "2025-10-30",
+      "likes": 120,
+      "comments": [
+        {
+          "id": "1",
+          "author": "Profe Lenin",
+          "text": "Me gusto que pusieron el marco legal",
+          "date": "2025-10-30"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "title": "Pet Finder",
+      "summary": "Rastreador de mascotas perdidas con IA",
+      "category": "Proyecto Integrador",
+      "content": "El grupo PetFinder presento su aplicacion movil con reconocimiento de imagenes y geolocalizacion que utilice inteligencia artificial.",
+      "image": "/assets/petfinder.jpg",
+      "author": "PetFinder Team",
+      "date": "2025-10-30",
+      "likes": 95,
+      "comments": []
+    },
+    {
+      "id": "9",
+      "title": "UPB SEÑAS",
+      "summary": "Traductor de lenguaje de señas con IA",
+      "category": "Accesibilidad",
+      "content": "El grupo UPB SEÑAS presento su traductor de lenguaje de señas con el que por medio de una inteligencia artificial de reconocimiento de imagenes.",
+      "image": "/assets/upbseñas.jpg",
+      "author": "UPB SEÑAS Team",
+      "date": "2025-10-30",
+      "likes": 110,
+      "comments": []
+    },
+    {
+      "id": "10",
+      "title": "Tongi",
+      "summary": "Herramienta de traduccion en tiempo real",
+      "category": "Herramientas",
+      "content": "El grupo presento una herramienta de traduccion adaptada a distintos dispositivos moviles con las funciones de traduccion en tiempo real.",
+      "image": "/assets/tongi.jpg",
+      "author": "Tongi Team",
+      "date": "2025-10-30",
+      "likes": 78,
+      "comments": []
+    },
+    {
+      "id": "11",
+      "title": "DistriFile",
+      "summary": "Sistema de almacenamiento distribuido",
+      "category": "Sistemas Distribuidos",
+      "content": "Sistema de almacenamiento distribuido que permita almacenar y recuperar archivos mediante fragmentacion y redundancia.",
+      "image": "/assets/distrifile.jpg",
+      "author": "Majo",
+      "date": "2025-10-30",
+      "likes": 102,
+      "comments": []
+    },
+    {
+      "id": "12",
+      "title": "BlessImage",
+      "summary": "Sistema de edicion de imagenes por lotes",
+      "category": "Procesamiento de Imagenes",
+      "content": "El grupo presento un sistema para el procesamiento y edicion de imagenes tanto individuales como por lotes.",
+      "image": "/assets/blessimage.jpg",
+      "author": "BlessImage Team",
+      "date": "2025-10-30",
+      "likes": 67,
+      "comments": []
+    }
+  ],
+  "categories": [
+    {
+      "id": "integrador-1",
+      "name": "Integrador I",
+      "description": "Proyectos de primer integrador",
+      "count": 3
+    },
+    {
+      "id": "integrador-2",
+      "name": "Integrador II",
+      "description": "Proyectos de segundo integrador",
+      "count": 3
+    },
+    {
+      "id": "proyecto-integrador",
+      "name": "Proyecto Integrador",
+      "description": "Proyectos integradores avanzados",
+      "count": 3
+    },
+    {
+      "id": "herramientas",
+      "name": "Herramientas",
+      "description": "Herramientas y utilidades",
+      "count": 1
+    },
+    {
+      "id": "sistemas-distribuidos",
+      "name": "Sistemas Distribuidos",
+      "description": "Sistemas y arquitecturas distribuidas",
+      "count": 1
+    },
+    {
+      "id": "procesamiento",
+      "name": "Procesamiento de Imagenes",
+      "description": "Procesamiento y analisis de imagenes",
+      "count": 1
+    }
+  ],
+  "metadata": {
+    "totalNews": 12,
+    "totalCategories": 6,
+    "lastUpdated": "2025-11-04",
+    "version": "1.0"
+  }
+}

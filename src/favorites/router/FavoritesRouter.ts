@@ -1,19 +1,35 @@
-
-import { Router } from 'express'
+import { Router, Request, Response } from 'express'
 import FavoritesView from '../view/FavoritesView'
 
 export default class FavoritesRouter {
-    public readonly router: Router
+    private view: FavoritesView
+    public router: Router
 
-    constructor(private view: FavoritesView) {
+    constructor(view: FavoritesView) {
+        this.view = view
         this.router = Router()
-        this.configureRoutes()
+        this.setupRoutes()
     }
 
-    private configureRoutes(): void {
-        this.router.get('/favoritos', (req, res) => this.view.render(req, res))
-        this.router.get('/favoritos/partial', (req, res) => this.view.renderPartial(req, res))
-        this.router.post('/api/favoritos/add', (req, res) => this.view.addFavorite(req, res))
-        this.router.post('/api/favoritos/remove', (req, res) => this.view.removeFavorite(req, res))
+    private setupRoutes(): void {
+        this.router.get('/api/favorites', (_req: Request, res: Response): void => {
+            res.json({ success: true, data: this.view.getFavorites() })
+        })
+
+        this.router.post('/api/favorites/:id', (req: Request, res: Response): void => {
+            const newsId = req.params['id']!
+            const added = this.view.addFavorite(newsId)
+            res.json({ success: true, added })
+        })
+
+        this.router.delete('/api/favorites/:id', (req: Request, res: Response): void => {
+            const newsId = req.params['id']!
+            const removed = this.view.removeFavorite(newsId)
+            res.json({ success: true, removed })
+        })
+    }
+
+    getRouter() {
+        return this.router
     }
 }

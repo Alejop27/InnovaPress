@@ -1,8 +1,7 @@
-
 import FavoritesModel from '../model/FavoritesModel'
 import FavoritesView from '../view/FavoritesView'
 import FavoritesRouter from '../router/FavoritesRouter'
-import NewsRepository from '../../repository/NewsRepository'
+
 
 export default class FavoritesFactory {
     private model: FavoritesModel
@@ -16,8 +15,8 @@ export default class FavoritesFactory {
     }
 
     static create(): FavoritesFactory {
-        const model = new FavoritesModel(NewsRepository)
-        const view = new FavoritesView(model)
+        const model = new FavoritesModel()  // ✅ SIN parámetros
+        const view = new FavoritesView()
         const router = new FavoritesRouter(view)
         return new FavoritesFactory(model, view, router)
     }

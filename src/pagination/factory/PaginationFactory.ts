@@ -1,6 +1,6 @@
 
 import PaginationModel from '../model/PaginationModel'
-import PaginationView from '../view/PAginationView'
+import PaginationView from '../view/PaginationView'
 import PaginationRouter from '../router/PaginationRouter'
 
 export default class PaginationFactory {

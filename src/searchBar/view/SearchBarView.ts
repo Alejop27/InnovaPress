@@ -1,30 +1,36 @@
-
-import { Request, Response } from 'express'
 import SearchBarModel from '../model/SearchBarModel'
 
 export default class SearchBarView {
-    constructor(private model: SearchBarModel) { }
+    private model: SearchBarModel
 
-    render(_req: Request, res: Response): void  {
-        try {
-            const config = this.model.getConfig()
-            const filters = this.model.getFilters()
+    constructor(model: SearchBarModel) {
+        this.model = model
+    }
 
-            res.render('searchBar/searchBar', { config, filters })
-        } catch (error) {
-            console.error('Error en SearchBarView:', error)
-            res.status(500).send('Error')
+    render(): any {
+        const config = this.model.getConfig()
+        const filters = this.getFilters()
+
+        return {
+            config,
+            filters,
+            placeholder: config.placeholder
         }
     }
 
-    search (req: Request, res: Response): void {
-        try {
-            const { query } = req.query
-            const results = this.model.search(query as string)
+    search(query: string): any[] {
+        return this.model.search(query)
+    }
 
-            res.json({ success: true, data: results })
-        } catch (error) {
-            res.status(500).json({ success: false, error })
-        }
+    getConfig(): any {
+        return this.model.getConfig()
+    }
+
+    getFilters(): string[] {
+        return ['Todas', 'Integrador I', 'Integrador II', 'Proyecto Integrador']
+    }
+
+    displayResults(results: any[]): void {
+        console.log('Resultados:', results)
     }
 }
